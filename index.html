@@ -3,17 +3,50 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Voice Reminder </title>
-    <link rel="stylesheet" href="style.css">
+    <title>Digital Diary Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div id="app">
-        <h1>Voice Reminder App</h1>
-        <button id="record">Record Reminder</button>
-        <input type="datetime-local" id="schedule-time">
-        <button id="set-reminder">Set Reminder</button>
-        <ul id="reminders-list"></ul>
+    <div class="dashboard-container">
+        <div class="header">
+            <h1>My Digital Diary</h1>
+            <button id="addEntryButton" class="btn">Add Entry</button>
+        </div>
+
+        <div class="search-container">
+            <input type="date" id="searchDate" class="search-input">
+            <button id="searchButton" class="btn">Search</button>
+        </div>
+
+        <div class="entries-container" id="entriesContainer">
+            <!-- Entries will be displayed here -->
+        </div>
+
+        <div class="camera-container">
+            <button id="cameraButton" class="camera-btn">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10l1.507-3.015A2 2 0 016.37 5h11.26a2 2 0 011.864 1.315L21 10m-9 9a4 4 0 100-8 4 4 0 000 8zm-6 2h12" />
+                </svg>
+            </button>
+            <video id="videoPreview" style="display: none; width: 100%; margin-top: 10px; border-radius: 8px;" autoplay muted></video>
+            <button id="capturePhoto" class="btn" style="margin-top: 10px; display: none;">Capture Photo</button>
+            <button id="stopCamera" class="btn" style="margin-top: 10px; display: none;">Stop Camera</button>
+        </div>
     </div>
-    <script src="script.js"></script>
+
+    <!-- Add Entry Modal -->
+    <div id="addEntryModal" class="modal">
+        <div class="modal-content">
+            <span id="closeModal" class="close">&times;</span>
+            <h2>Add New Entry</h2>
+            <form id="addEntryForm">
+                <textarea id="entryText" placeholder="Write something..."></textarea>
+                <input type="file" id="entryMedia" accept="image/*,video/*,audio/*">
+                <button type="submit" class="btn">Add Entry</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="scripts.js"></script>
 </body>
 </html>
