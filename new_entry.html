@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Digital Diary</title>
+    <!-- Link to the external CSS file -->
+    <link rel="stylesheet" href="new_entry_styles.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        <div class="header">
+            <h1>My Digital Diary</h1>
+            <button id="addEntryButton" class="btn">Add Entry</button>
+            <button id="saveEntryButton" class="btn">Save</button>
+        </div>
+
+        <!-- Add Entry Section -->
+        <div id="addEntryContainer" class="add-entry-container">
+            <textarea id="entryText" placeholder="Write something..."></textarea>
+            <div class="upload-section">
+                <label for="entryMedia">Upload Media:</label>
+                <input type="file" id="entryMedia" accept="image/*,video/*">
+            </div>
+            <div class="camera-section">
+                <button id="cameraButton" class="btn camera-btn">Open Camera</button>
+                <video id="videoPreview" autoplay muted></video>
+                <button id="stopCameraButton" class="btn stop-camera-btn">Stop Camera</button>
+            </div>
+        </div>
+
+        <!-- Entries Section -->
+        <div id="entriesContainer" class="entries-container">
+            <!-- Entries will be dynamically added here -->
+        </div>
+    </div>
+
+    <!-- Link to the external JavaScript file -->
+    <script src="new_entry_scripts.js"></script>
+</body>
+</html>
