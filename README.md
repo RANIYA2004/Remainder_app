@@ -1,10 +1,10 @@
-voice remainder app
+Digital diary
 Team Name: Error 404
 Team Members: 
   Rafiya Iqbal
   Raniya Iqbal
-  Problem Statement:
-People often forget important tasks and struggle with managing schedules efficiently, especially when existing apps are complex or lack voice-based functionality.
+Problem Statement:
+Managing personal notes, images, and videos in a unified and organized manner can be challenging, especially when traditional diaries or scattered digital tools fail to integrate multimedia content effectively. This lack of organization can lead to inefficiencies and the inability to reflect on personal growth over time.
 
 Solution:
-Develop a user-friendly app that allows users to create and schedule reminders using voice commands. The app will send timely notifications and support features like recurring reminders and voice-to-text conversion, making task management simple and accessible for everyone.
+A Digital Diary application offers a seamless platform to record text entries alongside multimedia such as images and videos, ensuring everything is stored securely and accessibly in one place. By integrating features like media upload, camera capture, and automatic timestamping, it provides an efficient and intuitive way to document and revisit personal memories.
