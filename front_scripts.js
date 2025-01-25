@@ -7,10 +7,10 @@ const journalCard = document.querySelector(".journal-card");
 
 // Event listener for New Journal button
 newJournalButton.addEventListener("click", () => {
-    window.location.href = "index.html"; // Redirect to index.html
+    window.location.href = "new_entry.html"; 
 });
 
 // Event listener for Journal Card
 journalCard.addEventListener("click", () => {
-    window.location.href = "journal.html"; // Redirect to journal.html
+    window.location.href = "index.html"; 
 });

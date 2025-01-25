@@ -17,14 +17,50 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     // Save the Entry
-    saveEntryButton.addEventListener("click", () => {
+    saveEntryButton.addEventListener("click", async () => {
         const text = entryText.value;
         const mediaFile = entryMedia.files[0];
-
+    
         if (!text && !mediaFile && !videoStream) {
             alert("Please write something or upload a media file.");
             return;
         }
+    
+        const formData = new FormData();
+        formData.append("text_content", text);
+        if (mediaFile) {
+            formData.append("media", mediaFile);
+        }
+    
+        // If video is being captured
+        if (videoStream) {
+            const canvas = document.createElement("canvas");
+            canvas.width = videoPreview.videoWidth;
+            canvas.height = videoPreview.videoHeight;
+            const context = canvas.getContext("2d");
+            context.drawImage(videoPreview, 0, 0, canvas.width, canvas.height);
+            const blob = await new Promise((resolve) => canvas.toBlob(resolve, "image/png"));
+            formData.append("media", blob, "capture.png");
+        }
+    
+        try {
+            const response = await fetch("save_entry.php", {
+                method: "POST",
+                body: formData,
+            });
+    
+            const result = await response.json();
+            if (result.success) {
+                alert("Entry saved successfully!");
+                resetForm();
+            } else {
+                alert("Failed to save entry: " + result.message);
+            }
+        } catch (error) {
+            alert("An error occurred: " + error.message);
+        }
+    });
+    
 
         const entryElement = document.createElement("div");
         entryElement.classList.add("entry");
@@ -126,4 +162,3 @@ document.addEventListener("DOMContentLoaded", () => {
             return null;
         }
     }
-});
