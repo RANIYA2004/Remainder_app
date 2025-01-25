@@ -47,7 +47,7 @@ form.addEventListener("submit", (event) => {
     .then((response) => response.text())
     .then((data) => {
         if (isLogin && data.includes("Login successful!")) {
-            window.location.href = "index.html"; // Redirect on success
+            window.location.href = "front.html"; // Redirect on success
         } else {
             alert(data); // Show error message
         }

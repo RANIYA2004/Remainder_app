@@ -46,7 +46,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $user = $result->fetch_assoc();
             if (password_verify($password, $user["password"])) {
                 echo "Login successful!";
-                echo "<script>window.location.href = 'index.html';</script>";
+                //echo "<script>window.location.href = 'front.html';</script>";
             } else {
                 echo "Invalid password!";
             }

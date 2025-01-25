@@ -10,7 +10,6 @@
     <div class="dashboard-container">
         <div class="header">
             <h1>My Digital Diary</h1>
-            <button id="addEntryButton" class="btn">Add Entry</button>
         </div>
 
         <div class="search-container">
@@ -31,19 +30,6 @@
             <video id="videoPreview" style="display: none; width: 100%; margin-top: 10px; border-radius: 8px;" autoplay muted></video>
             <button id="capturePhoto" class="btn" style="margin-top: 10px; display: none;">Capture Photo</button>
             <button id="stopCamera" class="btn" style="margin-top: 10px; display: none;">Stop Camera</button>
-        </div>
-    </div>
-
-    <!-- Add Entry Modal -->
-    <div id="addEntryModal" class="modal">
-        <div class="modal-content">
-            <span id="closeModal" class="close">&times;</span>
-            <h2>Add New Entry</h2>
-            <form id="addEntryForm">
-                <textarea id="entryText" placeholder="Write something..."></textarea>
-                <input type="file" id="entryMedia" accept="image/*,video/*,audio/*">
-                <button type="submit" class="btn">Add Entry</button>
-            </form>
         </div>
     </div>
 
