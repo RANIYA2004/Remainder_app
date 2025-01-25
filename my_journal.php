@@ -37,7 +37,7 @@
                 $searchTimestamp = $_GET['timestamp'];
 
                 // SQL query to fetch rows matching the timestamp
-                $sql = "SELECT * FROM diary WHERE timestamp = ?";
+                $sql = "SELECT * FROM journal WHERE timestamp = ?";
                 $stmt = $conn->prepare($sql);
                 $stmt->bind_param("s", $searchTimestamp);
                 $stmt->execute();

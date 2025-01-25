@@ -12,5 +12,5 @@ newJournalButton.addEventListener("click", () => {
 
 // Event listener for Journal Card
 journalCard.addEventListener("click", () => {
-    window.location.href = "index.html"; 
+    window.location.href = "my_journal.php"; 
 });
