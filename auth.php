@@ -1,4 +1,8 @@
 <?php
+// Enable error reporting
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
 $host = "localhost";
 $user = "root";
 $password = "";
@@ -11,8 +15,16 @@ $conn = new mysqli($host, $user, $password, $database);
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
+$query = "SELECT DATABASE()";
+$result = $conn->query($query);
+if ($result) {
+    echo "Connected to database successfully: " . $result->fetch_row()[0] . "<br>";
+} else {
+    echo "Database connection failed.<br>";
+}
+// Debugging: Print incoming POST data
+// var_dump($_POST);
 
-// Handle form submissions
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = $conn->real_escape_string($_POST["email"]);
     $password = $conn->real_escape_string($_POST["password"]);
@@ -24,7 +36,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if ($conn->query($query) === TRUE) {
             echo "Registration successful!";
         } else {
-            echo "Error: " . $conn->error;
+            echo "Error inserting into database: " . $conn->error;
         }
     } elseif (isset($_POST["action"]) && $_POST["action"] == "login") {
         $query = "SELECT * FROM users WHERE email='$email'";
@@ -34,6 +46,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $user = $result->fetch_assoc();
             if (password_verify($password, $user["password"])) {
                 echo "Login successful!";
+                echo "<script>window.location.href = 'index.html';</script>";
             } else {
                 echo "Invalid password!";
             }
