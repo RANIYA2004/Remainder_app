@@ -31,20 +31,26 @@ form.addEventListener("submit", (event) => {
 
     const email = form.email.value;
     const password = form.password.value;
-    const confirmPassword = form["confirm-password"].value;
+    const confirmPassword = form["confirm-password"]?.value;
+    const action = isLogin ? "login" : "register";
 
     if (!isLogin && password !== confirmPassword) {
         alert("Passwords do not match!");
         return;
     }
 
-    if (isLogin) {
-        // Perform login action
-        console.log("Logging in with", { email, password });
-    } else {
-        // Perform registration action
-        console.log("Registering with", { email, password });
-    }
-
-    form.reset();
-});
+    fetch("auth.php", {
+    method: "POST",
+    headers: { "Content-Type": "application/x-www-form-urlencoded" },
+    body: new URLSearchParams({ email, password, action }),
+})
+    .then((response) => response.text())
+    .then((data) => {
+        if (isLogin && data.includes("Login successful!")) {
+            window.location.href = "front.html"; // Redirect on success
+        } else {
+            alert(data); // Show error message
+        }
+    })
+    .catch((error) => console.error("Error:", error));
+})
